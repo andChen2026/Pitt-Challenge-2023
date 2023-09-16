@@ -12,6 +12,13 @@ from pathlib import Path
 import PySimpleGUI as sg
 import pandas as pd
 import os
+import datetime as date
+from PIL import Image
+
+name = [] # List of names
+date = [] # List of dates
+success = [] # List of booleans
+pill_images = [] # List of Images
 
 # --- Store Data as CSV
 # --- Should store photo of prescription bottle, name of individual, the date, and success or failure
