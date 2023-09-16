@@ -40,7 +40,7 @@ args = parser.parse_args()
 image = preprocess_image(args.image_name)
 
 # Fine-tuned config for better OCR output
-myconfig = r"--psm 11 --oem 3"
+myconfig = r"--psm 1 --oem 3"
 
 output_text = pytesseract.image_to_string(image, config=myconfig)
 
