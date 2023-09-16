@@ -27,12 +27,12 @@ def fetch_user_csv(filename):
 
 # --- Layout --- 
 
+sg.theme("LightGrey")
+
 title = [
-        [sg.Stretch(), sg.Frame("", [[]], background_color="white", font=('Arial', 50), size=(100, 60)), sg.Stretch()],
-        [sg.Stretch(), sg.Frame("", [[]], background_color="Grey", font=('Arial', 50), size=(500, 100)), sg.Stretch()]
+        [sg.Stretch(), sg.Frame("", [[sg.Stretch(background_color="#E0E0E0"), sg.Text("Prescription Verifier", font=("Arial", 40), background_color="#E0E0E0", pad=20), sg.Stretch(background_color="#E0E0E0")]], background_color="#E0E0E0", font=('Arial', 50), size=(500, 100), pad=((20, 20), (60, 20))), sg.Stretch()]
         ]
 
-sg.theme_background_color = "white"
 
 layout = [
             title
