@@ -27,14 +27,13 @@ def fetch_user_csv(filename):
 
 # --- Layout --- 
 
-sg.theme("LightGrey")
+sg.theme("BlueMono")
 
 title = [
-        [sg.Stretch(), sg.Frame("", [[sg.Stretch(background_color="#E0E0E0"), sg.Text("Prescription Verifier", font=("Arial", 50), background_color="#E0E0E0", pad=20), sg.Stretch(background_color="#E0E0E0")]], background_color="#E0E0E0", font=('Arial', 50), size=(500, 100), pad=((20, 20), (60, 20))), sg.Stretch()],
-        [sg.Stretch(), sg.Button("Upload Photo", font=("Arial", 35), button_color=("white on grey"), border_width=2, pad=(15), size=(12, 0.1)), sg.Stretch()],
-        [sg.Stretch(), sg.Button("  View logs ", font=("Arial", 35), button_color=("white on grey"), border_width=2, pad=(15), size=(12, 0.1)), sg.Stretch()],
-        [sg.Stretch(), sg.Button("  Contact   ", font=("Arial", 35), button_color=("white on grey"), border_width=2, pad=(15), size=(12, 0.1)), sg.Stretch()]
-
+        [sg.Stretch(), sg.Frame("", [[sg.Stretch(background_color="#E0E0E0"), sg.Text("Prescription Verifier", font=("Arial", 60), background_color="#E0E0E0", pad=((10, 10), (20, 20))), sg.Stretch(background_color="#E0E0E0")]], background_color="#E0E0E0", font=('Arial', 50), size=(800, 125), pad=((20, 30), (60, 40))), sg.Stretch()],
+        [sg.Stretch(), sg.Button("Upload Photo", font=("Arial", 35), button_color=("white on blue"), border_width=2, pad=(10), size=(13, 0.2)), sg.Stretch()],
+        [sg.Stretch(), sg.Button("View logs", font=("Arial", 35), button_color=("white on blue"), border_width=2, pad=(10), size=(13, 0.2)), sg.Stretch()],
+        [sg.Stretch(), sg.Button("Contact", font=("Arial", 35), button_color=("white on blue"), border_width=2, pad=(10), size=(13, 0.2)), sg.Stretch()]
         ]
 
 
