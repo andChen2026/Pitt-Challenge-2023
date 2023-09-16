@@ -35,5 +35,12 @@ layout = [
 
 sg.Window(title="Prescription Verifier App", layout=layout, margins=(400, 300)).read()
 
+# -- Start the infinite while loop in the background
+while True:
+    event, values = sg.Window.read()
+    print(event, values)
+    if event == sg.WINDOW_CLOSED:
+        break
+
 sg.Window.close()
 del sg.Window
