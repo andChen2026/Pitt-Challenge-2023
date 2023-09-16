@@ -27,13 +27,21 @@ def fetch_user_csv(filename):
 
 # --- Layout --- 
 
+title = [
+        [sg.Stretch(), sg.Frame("", [[]], background_color="white", font=('Arial', 50), size=(100, 60)), sg.Stretch()],
+        [sg.Stretch(), sg.Frame("", [[]], background_color="Grey", font=('Arial', 50), size=(500, 100)), sg.Stretch()]
+        ]
+
+sg.theme_background_color = "white"
+
 layout = [
-            [],
-            [],
-            []
+            title
+            #[sg.Stretch(), sg.Frame('', [[sg.Text("Prescription Verifier", font=('Arial', 50), background_color="grey", text_color="white")]], pad=60, border_width=5, background_color="grey"), sg.Stretch()],
+            #[sg.Stretch(), sg.Button('Upload Pill Bottle', font=('Arial', 30)), sg.Stretch()]
+            
          ]
 
-sg.Window(title="Prescription Verifier App", layout=layout, margins=(400, 300)).read()
+sg.Window(title="Prescription Verifier App", layout=layout, size=(700, 500)).read()
 
 # -- Start the infinite while loop in the background
 while True:
