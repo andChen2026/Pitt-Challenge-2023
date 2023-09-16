@@ -1,3 +1,6 @@
+# Example code to make different GUI windows
+# Will NOT be included in the final project
+
 import PySimpleGUI as sg
 
 '''
