@@ -29,47 +29,41 @@ import os
 # --- Layout --- 
 
 sg.theme("BlueMono")
-
 title_layout = [
-        [sg.Stretch(), sg.Frame("", [[sg.Stretch(background_color="#E0E0E0"), sg.Text("Prescription Verifier", font=("Arial", 60), background_color="#E0E0E0", pad=((10, 5), (20, 10))), sg.Stretch(background_color="#E0E0E0")]], background_color="#E0E0E0", font=('Arial', 50), size=(800, 125), pad=((20, 30), (30, 20))), sg.Stretch()],
-        [sg.Stretch(), sg.FileBrowse("Upload Photo", font=("Arial", 35), button_color=("white on blue"), pad=(5), size=(13, 0.2), file_types=(('PNG', '.png'), ('JPG', '.jpeg'),)), sg.Stretch()],
-        [sg.Stretch(), sg.FileBrowse("Import CSV", font=("Arial", 35), button_color=("white on blue"), pad=(5), size=(13, 0.2), file_types=(('Excel', '.csv'),)), sg.Stretch()],
-        [sg.Stretch(), sg.Button("View logs", key= '-LOGS-', font=("Arial", 35), button_color=("white on blue"), border_width=2, pad=(5), size=(13, 0.2)), sg.Stretch()],
-        [sg.Stretch(), sg.Button("Contact", key='-CONTACT-', font=("Arial", 35), button_color=("white on blue"), border_width=2, pad=(5), size=(13, 0.2)), sg.Stretch()]
-        ]
-
+            [sg.Stretch(), sg.Frame("", [[sg.Stretch(background_color="#E0E0E0"), sg.Text("Prescription Verifier", font=("Arial", 60), background_color="#E0E0E0", pad=((10, 5), (20, 10))), sg.Stretch(background_color="#E0E0E0")]], background_color="#E0E0E0", font=('Arial', 50), size=(800, 125), pad=((20, 30), (30, 20))), sg.Stretch()],
+            [sg.Stretch(), sg.FileBrowse("Upload Photo", font=("Arial", 35), button_color=("white on blue"), pad=(5), size=(13, 0.2), file_types=(('PNG', '.png'), ('JPG', '.jpeg'),)), sg.Stretch()],
+            [sg.Stretch(), sg.FileBrowse("Import CSV", font=("Arial", 35), button_color=("white on blue"), pad=(5), size=(13, 0.2), file_types=(('Excel', '.csv'),)), sg.Stretch()],
+            [sg.Stretch(), sg.Button("View logs", key= '-LOGS-', font=("Arial", 35), button_color=("white on blue"), border_width=2, pad=(5), size=(13, 0.2)), sg.Stretch()],
+            [sg.Stretch(), sg.Button("Contact", key='-CONTACT-', font=("Arial", 35), button_color=("white on blue"), border_width=2, pad=(5), size=(13, 0.2)), sg.Stretch()]
+            ]
 logs_layout = [
-        [sg.Stretch(), sg.Text("History", font=('Arial', 24), visible= False), sg.Stretch()],
-        [],
-        []
-              ]
+            [sg.Stretch(), sg.Frame("", [[sg.Stretch(background_color="#E0E0E0"), sg.Text("Prescription Verifier", font=("Arial", 60), background_color="#E0E0E0"), sg.Stretch(background_color="#E0E0E0")]], background_color="#E0E0E0", font=('Arial', 50), size=(800, 125), pad=((20, 30), (30, 20))), sg.Stretch()]
+            ]
 
+def title_page():
+    layout = title_layout
+    return sg.Window("Title", layout, finalize=True)
 
-x = 0
-layout = [
-        [sg.Frame("",title_layout, visible=True, key='Title')],
-        
-         ]
+def log_page():
+    layout = logs_layout
+    return sg.Window("Logs", layout, finalize=True)
 
 #sg.Window(title="Prescription Verifier App", layout=layout, size=(700, 500)).read()
-window = sg.Window('Prescription Verifier App', layout, size=(700,500))
+window1, window2 = title_page(), None
 # -- Start the infinite while loop in the background
 while True:
-    event, values = window.read()
-    #print(event, values)
+    window, event, values = sg.read_all_windows()
     
     if event == sg.WIN_CLOSED:
         break
-    if event == '-LOGS-':
-        x+=1
-        window['Title'].update(visible=False)
-        #window[test].update("Hi")
-        
-        
-    if event == '-CONTACT-':
-        x+=1
-        #window['-CONTACT-'].update(values[1])
-        #window.refresh()
 
-sg.Window.close()
-del sg.Window
+    if window == window1:
+
+        if event == '-LOGS-':
+            window1.hide()
+            window2 = log_page()
+
+        if event == '-CONTACT-':
+            #window['-CONTACT-'].update(values[1])
+            #window.refresh()
+            x=0

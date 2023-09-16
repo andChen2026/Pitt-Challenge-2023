@@ -1,33 +1,55 @@
-import PySimpleGUI as sg   
+import PySimpleGUI as sg
 
-"""
-  DESIGN PATTERN 2 - Multi-read window. Reads and updates fields in a window
-"""
+'''
+    Example of wizard-like PySimpleGUI windows
+'''
 
-sg.theme('Dark Amber')    # Add some color for fun
+def make_window1():
+    layout = [[sg.Text('Window 1'), ],
+              [sg.Input(k='-IN-', enable_events=True)],
+              [sg.Text(size=(20,1),  k='-OUTPUT-')],
+              [sg.Button('Next >'), sg.Button('Exit')]]
 
-# 1- the layout
-layout = [[sg.Text('Your typed chars appear here:'), sg.Text(size=(15,1), key='-OUTPUT-')],
-          [sg.Input(key='-IN-')],
-          [sg.Button('Show'), sg.Button('Exit')]]
+    return sg.Window('Window 1', layout, finalize=True)
 
-# 2 - the window
-window = sg.Window('Pattern 2', layout)
 
-# 3 - the event loop
+def make_window2():
+    layout = [[sg.Text('Window 2')],
+               [sg.Button('< Prev'), sg.Button('Next >')]]
+
+    return sg.Window('Window 2', layout, finalize=True)
+
+
+def make_window3():
+    layout = [[sg.Text('Window 3')],
+               [sg.Button('< Prev'), sg.Button('Exit')]]
+    return sg.Window('Window 3', layout, finalize=True)
+
+
+
+window1, window2, window3 = make_window1(), None, None
+
 while True:
-    event, values = window.read()
-    print(event, values)
-    if event == sg.WIN_CLOSED or event == 'Exit':
+    window, event, values = sg.read_all_windows()
+    if window == window1 and event in (sg.WIN_CLOSED, 'Exit'):
         break
-    if event == 'Show':
-        # Update the "output" text element to be the value of "input" element
-        window['-OUTPUT-'].update(values['-IN-'])
 
-        # In older code you'll find it written using FindElement or Element
-        # window.FindElement('-OUTPUT-').Update(values['-IN-'])
-        # A shortened version of this update can be written without the ".Update"
-        # window['-OUTPUT-'](values['-IN-'])     
+    if window == window1:
+        if event == 'Next >':
+            window1.hide()
+            window2 = make_window2()
+        #window1['-OUTPUT-'].update(values['-IN-'])
 
-# 4 - the close
+    if window == window2:
+        if event == 'Next >':
+            window2.hide()
+            window3 = make_window3()
+        elif event in (sg.WIN_CLOSED, '< Prev'):
+            window2.close()
+            window1.un_hide()
+
+    if window == window3:
+        window3.close()
+        window2.un_hide()
+
 window.close()
