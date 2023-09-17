@@ -10,7 +10,7 @@ from PIL import Image
 import io
 
 ## my personal file path- will be changed for app
-folder_path = "/Users/dianalysova/Downloads/dm_spl_monthly_update_aug2023"
+folder_path = "/Users/dianalysova/Downloads/dm_spl_monthly_update_aug2023/prescription"
 
 pattern = r'^\d+.*\.jpg$'
 
